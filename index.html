@@ -77,6 +77,37 @@
             }
         }
 
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes floatTool {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
         /* Header with Mesh Gradient */
         header {
             background: linear-gradient(-45deg, var(--pastel-lavender), var(--pastel-sky), var(--pastel-pink), var(--pastel-mint));
@@ -130,6 +161,61 @@
             position: relative;
             z-index: 1;
             animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 450px;
+            height: 450px;
+            z-index: 0;
+            opacity: 0.9;
+            animation: slideInRight 1.2s ease 0.3s backwards;
+        }
+
+        .hero-visual svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 30px rgba(184, 164, 216, 0.3));
+        }
+
+        /* Animated elements within SVG */
+        .worker-silhouette {
+            animation: fadeInUp 1.5s ease 0.5s backwards;
+        }
+
+        .tool-hammer {
+            animation: floatTool 4s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .tool-wrench {
+            animation: floatTool 5s ease-in-out infinite 0.5s;
+            transform-origin: center;
+        }
+
+        .tool-gear {
+            animation: float 6s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .skill-circle {
+            animation: scaleIn 1s ease backwards;
+        }
+
+        .skill-circle:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .skill-circle:nth-child(2) {
+            animation-delay: 1s;
+        }
+
+        .skill-circle:nth-child(3) {
+            animation-delay: 1.2s;
         }
 
         .container {
@@ -462,6 +548,13 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero-visual {
+                width: 300px;
+                height: 300px;
+                right: -10%;
+                opacity: 0.6;
+            }
+
             header h1 {
                 font-size: 2.5rem;
             }
@@ -502,6 +595,10 @@
         }
 
         @media (max-width: 480px) {
+            .hero-visual {
+                display: none;
+            }
+
             header {
                 padding: 3rem 1.5rem;
             }
@@ -520,6 +617,111 @@
     <header>
         <h1>SkillsUp Platform</h1>
         <p>Empowering Blue-Collar Workers with Job Opportunities and Skills Development</p>
+
+        <!-- Hero Visual: Skills Landscape with Worker Silhouettes & Tools -->
+        <div class="hero-visual">
+            <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Abstract Circles (Skills Bubbles) -->
+                <g class="skill-circles">
+                    <circle class="skill-circle" cx="380" cy="120" r="60" fill="#E8D7FF" opacity="0.5"/>
+                    <circle class="skill-circle" cx="420" cy="300" r="45" fill="#C3E4FF" opacity="0.5"/>
+                    <circle class="skill-circle" cx="350" cy="400" r="50" fill="#FFD4E5" opacity="0.5"/>
+                </g>
+
+                <!-- Worker Silhouette 1: Standing with Hard Hat -->
+                <g class="worker-silhouette" transform="translate(80, 200)">
+                    <!-- Hard Hat -->
+                    <ellipse cx="30" cy="10" rx="28" ry="8" fill="#8FB3E8"/>
+                    <path d="M 10 10 Q 30 -5 50 10 L 50 20 Q 30 30 10 20 Z" fill="#B8A4D8"/>
+                    <!-- Head -->
+                    <circle cx="30" cy="35" r="20" fill="#5F6C7B"/>
+                    <!-- Body -->
+                    <rect x="15" y="55" width="30" height="50" rx="5" fill="#2D3142"/>
+                    <!-- Arms -->
+                    <rect x="5" y="60" width="10" height="35" rx="5" fill="#2D3142"/>
+                    <rect x="45" y="60" width="10" height="35" rx="5" fill="#2D3142"/>
+                    <!-- Tool Belt -->
+                    <rect x="10" y="90" width="40" height="8" fill="#FFB3D4"/>
+                    <!-- Legs -->
+                    <rect x="18" y="105" width="12" height="45" rx="5" fill="#2D3142"/>
+                    <rect x="30" y="105" width="12" height="45" rx="5" fill="#2D3142"/>
+                </g>
+
+                <!-- Worker Silhouette 2: With Wrench -->
+                <g class="worker-silhouette" transform="translate(200, 220)">
+                    <!-- Hard Hat -->
+                    <ellipse cx="25" cy="8" rx="24" ry="7" fill="#FFB3D4"/>
+                    <path d="M 8 8 Q 25 -4 42 8 L 42 16 Q 25 25 8 16 Z" fill="#E8D7FF"/>
+                    <!-- Head -->
+                    <circle cx="25" cy="30" r="18" fill="#5F6C7B"/>
+                    <!-- Body -->
+                    <rect x="12" y="48" width="26" height="42" rx="4" fill="#2D3142"/>
+                    <!-- Arms (one raised with tool) -->
+                    <rect x="4" y="52" width="8" height="30" rx="4" fill="#2D3142" transform="rotate(-30 8 52)"/>
+                    <rect x="38" y="52" width="8" height="30" rx="4" fill="#2D3142"/>
+                    <!-- Legs -->
+                    <rect x="15" y="90" width="10" height="38" rx="4" fill="#2D3142"/>
+                    <rect x="25" y="90" width="10" height="38" rx="4" fill="#2D3142"/>
+                </g>
+
+                <!-- Floating Tool 1: Hammer -->
+                <g class="tool-hammer" transform="translate(320, 80)">
+                    <!-- Handle -->
+                    <rect x="0" y="15" width="8" height="60" rx="4" fill="#B8A4D8"/>
+                    <!-- Head -->
+                    <rect x="-15" y="0" width="38" height="20" rx="3" fill="#5F6C7B"/>
+                    <!-- Claw -->
+                    <path d="M 20 8 L 30 -5 L 32 0 L 23 12 Z" fill="#5F6C7B"/>
+                </g>
+
+                <!-- Floating Tool 2: Wrench -->
+                <g class="tool-wrench" transform="translate(140, 100)">
+                    <!-- Handle -->
+                    <rect x="0" y="0" width="6" height="70" rx="3" fill="#8FB3E8" transform="rotate(25 3 35)"/>
+                    <!-- Adjustable Head -->
+                    <rect x="-5" y="-8" width="16" height="12" rx="2" fill="#5F6C7B"/>
+                    <rect x="-3" y="-12" width="5" height="8" rx="1" fill="#5F6C7B"/>
+                </g>
+
+                <!-- Floating Tool 3: Gear/Cog -->
+                <g class="tool-gear" transform="translate(360, 220)">
+                    <!-- Gear outer -->
+                    <circle cx="0" cy="0" r="35" fill="#FFD4E5"/>
+                    <!-- Gear teeth -->
+                    <rect x="-4" y="-40" width="8" height="12" rx="2" fill="#FFB3D4"/>
+                    <rect x="-4" y="28" width="8" height="12" rx="2" fill="#FFB3D4"/>
+                    <rect x="-40" y="-4" width="12" height="8" rx="2" fill="#FFB3D4"/>
+                    <rect x="28" y="-4" width="12" height="8" rx="2" fill="#FFB3D4"/>
+                    <rect x="-30" y="-30" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(45)"/>
+                    <rect x="22" y="-30" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(-45)"/>
+                    <rect x="-30" y="22" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(-45)"/>
+                    <rect x="22" y="22" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(45)"/>
+                    <!-- Gear center -->
+                    <circle cx="0" cy="0" r="12" fill="#B8A4D8"/>
+                    <circle cx="0" cy="0" r="6" fill="#FAFBFC"/>
+                </g>
+
+                <!-- Abstract Skill Path/Arrow (representing growth) -->
+                <g opacity="0.7">
+                    <path d="M 50 400 Q 150 350 250 380 T 450 350"
+                          stroke="#B8A4D8"
+                          stroke-width="3"
+                          fill="none"
+                          stroke-dasharray="10,5"
+                          opacity="0.6"/>
+                    <circle cx="50" cy="400" r="8" fill="#B8A4D8"/>
+                    <circle cx="250" cy="380" r="8" fill="#8FB3E8"/>
+                    <circle cx="450" cy="350" r="8" fill="#FFB3D4"/>
+                </g>
+
+                <!-- Hard Hat Icon (larger, decorative) -->
+                <g transform="translate(280, 420)">
+                    <ellipse cx="40" cy="15" rx="38" ry="10" fill="#C3E4FF" opacity="0.6"/>
+                    <path d="M 10 15 Q 40 -8 70 15 L 70 30 Q 40 45 10 30 Z" fill="#E8D7FF" opacity="0.7"/>
+                    <rect x="35" y="-5" width="10" height="20" fill="#FFD4E5" opacity="0.6"/>
+                </g>
+            </svg>
+        </div>
     </header>
 
     <div class="container">

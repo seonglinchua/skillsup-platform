@@ -618,108 +618,244 @@
         <h1>SkillsUp Platform</h1>
         <p>Empowering Blue-Collar Workers with Job Opportunities and Skills Development</p>
 
-        <!-- Hero Visual: Skills Landscape with Worker Silhouettes & Tools -->
+        <!-- Hero Visual: Soft Pastel Illustration with Diverse Workers -->
         <div class="hero-visual">
             <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Background Abstract Circles (Skills Bubbles) -->
-                <g class="skill-circles">
-                    <circle class="skill-circle" cx="380" cy="120" r="60" fill="#E8D7FF" opacity="0.5"/>
-                    <circle class="skill-circle" cx="420" cy="300" r="45" fill="#C3E4FF" opacity="0.5"/>
-                    <circle class="skill-circle" cx="350" cy="400" r="50" fill="#FFD4E5" opacity="0.5"/>
+                <!-- SVG Filters for Depth and Glow Effects -->
+                <defs>
+                    <!-- Gaussian Blur for Depth of Field -->
+                    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+                    </filter>
+
+                    <!-- Stronger Blur for Background -->
+                    <filter id="backgroundBlur" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+                    </filter>
+
+                    <!-- Subtle Glow for Worker Figures -->
+                    <filter id="figureGlow" x="-50%" y="-50%" width="200%" height="200%">
+                        <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+                        <feFlood flood-color="#FFFFFF" flood-opacity="0.6" result="color"/>
+                        <feComposite in="color" in2="blur" operator="in" result="glow"/>
+                        <feMerge>
+                            <feMergeNode in="glow"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+
+                    <!-- Soft Mesh Gradient Background -->
+                    <linearGradient id="meshGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#D4FFE8;stop-opacity:0.8" />
+                        <stop offset="50%" style="stop-color:#E8D7FF;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#FFD4E5;stop-opacity:0.8" />
+                    </linearGradient>
+
+                    <radialGradient id="meshGradient2" cx="30%" cy="70%">
+                        <stop offset="0%" style="stop-color:#D4FFE8;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#E8D7FF;stop-opacity:0.3" />
+                    </radialGradient>
+
+                    <radialGradient id="meshGradient3" cx="70%" cy="30%">
+                        <stop offset="0%" style="stop-color:#FFD4E5;stop-opacity:0.6" />
+                        <stop offset="100%" style="stop-color:#D4FFE8;stop-opacity:0.3" />
+                    </radialGradient>
+
+                    <!-- Gradient for Landscape -->
+                    <linearGradient id="landscapeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#E8D7FF;stop-opacity:0.4" />
+                        <stop offset="100%" style="stop-color:#D4FFE8;stop-opacity:0.6" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Soft Mesh Gradient Background Layers -->
+                <rect width="500" height="500" fill="url(#meshGradient1)"/>
+                <ellipse cx="150" cy="350" rx="200" ry="180" fill="url(#meshGradient2)" filter="url(#softBlur)"/>
+                <ellipse cx="350" cy="150" rx="180" ry="200" fill="url(#meshGradient3)" filter="url(#softBlur)"/>
+
+                <!-- City Skyline Background (15% opacity) -->
+                <g opacity="0.15" filter="url(#backgroundBlur)">
+                    <!-- Building 1 -->
+                    <rect x="30" y="150" width="60" height="180" fill="#2D3142" rx="2"/>
+                    <rect x="40" y="160" width="8" height="10" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="52" y="160" width="8" height="10" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="64" y="160" width="8" height="10" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="40" y="180" width="8" height="10" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="52" y="180" width="8" height="10" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="64" y="180" width="8" height="10" fill="#8FB3E8" opacity="0.4"/>
+
+                    <!-- Building 2 -->
+                    <rect x="100" y="100" width="70" height="230" fill="#2D3142" rx="2"/>
+                    <rect x="112" y="115" width="10" height="12" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="128" y="115" width="10" height="12" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="144" y="115" width="10" height="12" fill="#8FB3E8" opacity="0.4"/>
+
+                    <!-- Building 3 -->
+                    <rect x="180" y="130" width="55" height="200" fill="#2D3142" rx="2"/>
+
+                    <!-- Building 4 (Tallest) -->
+                    <rect x="330" y="80" width="80" height="250" fill="#2D3142" rx="2"/>
+                    <rect x="345" y="95" width="12" height="14" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="363" y="95" width="12" height="14" fill="#8FB3E8" opacity="0.4"/>
+                    <rect x="381" y="95" width="12" height="14" fill="#8FB3E8" opacity="0.4"/>
+
+                    <!-- Building 5 -->
+                    <rect x="420" y="140" width="60" height="190" fill="#2D3142" rx="2"/>
                 </g>
 
-                <!-- Worker Silhouette 1: Standing with Hard Hat -->
-                <g class="worker-silhouette" transform="translate(80, 200)">
-                    <!-- Hard Hat -->
-                    <ellipse cx="30" cy="10" rx="28" ry="8" fill="#8FB3E8"/>
-                    <path d="M 10 10 Q 30 -5 50 10 L 50 20 Q 30 30 10 20 Z" fill="#B8A4D8"/>
+                <!-- Gradient Landscape Ground -->
+                <ellipse cx="250" cy="420" rx="280" ry="100" fill="url(#landscapeGradient)" opacity="0.7"/>
+                <ellipse cx="250" cy="430" rx="250" ry="80" fill="#D4FFE8" opacity="0.5" filter="url(#softBlur)"/>
+
+                <!-- Worker Silhouettes (Back to Front for Depth) -->
+
+                <!-- Worker 4: Electrician with Cable Coil (Back Left) -->
+                <g class="worker-silhouette" transform="translate(80, 260)" filter="url(#figureGlow)">
+                    <!-- Shadow -->
+                    <ellipse cx="30" cy="145" rx="30" ry="8" fill="#5F6C7B" opacity="0.2"/>
+
                     <!-- Head -->
-                    <circle cx="30" cy="35" r="20" fill="#5F6C7B"/>
+                    <circle cx="30" cy="25" r="18" fill="#5F6C7B"/>
+
                     <!-- Body -->
-                    <rect x="15" y="55" width="30" height="50" rx="5" fill="#2D3142"/>
-                    <!-- Arms -->
-                    <rect x="5" y="60" width="10" height="35" rx="5" fill="#2D3142"/>
-                    <rect x="45" y="60" width="10" height="35" rx="5" fill="#2D3142"/>
+                    <path d="M 30 43 L 18 48 L 15 90 L 20 90 L 20 130 L 40 130 L 40 90 L 45 90 L 42 48 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+
+                    <!-- Arm holding cable coil -->
+                    <path d="M 18 52 L 10 60 L 8 85 L 14 87 L 16 62 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+
+                    <!-- Cable Coil in hand -->
+                    <circle cx="8" cy="75" r="12" fill="none" stroke="#FFB3D4" stroke-width="3"/>
+                    <circle cx="8" cy="75" r="8" fill="none" stroke="#FFB3D4" stroke-width="2"/>
+                    <circle cx="8" cy="75" r="4" fill="none" stroke="#FFB3D4" stroke-width="1.5"/>
+
+                    <!-- Other arm -->
+                    <path d="M 42 52 L 50 60 L 52 85 L 46 87 L 44 62 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+
+                    <!-- Legs -->
+                    <rect x="18" y="130" width="14" height="40" rx="4"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+                    <rect x="28" y="130" width="14" height="40" rx="4"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+
+                    <!-- Tool belt highlight -->
+                    <rect x="16" y="88" width="28" height="6" rx="2" fill="#E8D7FF" opacity="0.7"/>
+                </g>
+
+                <!-- Worker 3: Warehouse Loader with Box (Back Right) -->
+                <g class="worker-silhouette" transform="translate(340, 250)" filter="url(#figureGlow)">
+                    <!-- Shadow -->
+                    <ellipse cx="35" cy="155" rx="32" ry="8" fill="#5F6C7B" opacity="0.2"/>
+
+                    <!-- Head -->
+                    <circle cx="35" cy="28" r="19" fill="#5F6C7B"/>
+
+                    <!-- Body bent slightly forward -->
+                    <path d="M 35 47 L 22 52 L 18 95 L 22 95 L 22 135 L 48 135 L 48 95 L 52 95 L 48 52 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+
+                    <!-- Arms holding box -->
+                    <path d="M 22 56 L 12 65 L 10 85 L 16 87 L 18 68 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+                    <path d="M 48 56 L 58 65 L 60 85 L 54 87 L 52 68 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+
+                    <!-- Cardboard Box -->
+                    <rect x="15" y="65" width="40" height="35" rx="2"
+                          fill="#FFD4E5" stroke="#FFB3D4" stroke-width="2" opacity="0.9"/>
+                    <line x1="15" y1="82" x2="55" y2="82" stroke="#FFB3D4" stroke-width="1.5"/>
+                    <line x1="35" y1="65" x2="35" y2="100" stroke="#FFB3D4" stroke-width="1.5"/>
+
+                    <!-- Legs -->
+                    <rect x="20" y="135" width="14" height="42" rx="4"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+                    <rect x="36" y="135" width="14" height="42" rx="4"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1"/>
+                </g>
+
+                <!-- Worker 1: Construction Worker with Hard Hat (Front Left) -->
+                <g class="worker-silhouette" transform="translate(140, 230)" filter="url(#figureGlow)">
+                    <!-- Shadow -->
+                    <ellipse cx="35" cy="165" rx="35" ry="9" fill="#5F6C7B" opacity="0.25"/>
+
+                    <!-- Hard Hat -->
+                    <ellipse cx="35" cy="12" rx="32" ry="9" fill="#FFB3D4" opacity="0.8"/>
+                    <path d="M 10 12 Q 35 -6 60 12 L 60 24 Q 35 36 10 24 Z"
+                          fill="#E8D7FF" stroke="#B8A4D8" stroke-width="1.5"/>
+                    <rect x="30" y="-2" width="10" height="14" rx="2" fill="#FFD4E5"/>
+
+                    <!-- Head -->
+                    <circle cx="35" cy="38" r="22" fill="#5F6C7B"/>
+
+                    <!-- Body (proud stance) -->
+                    <path d="M 35 60 L 20 66 L 16 112 L 22 112 L 22 150 L 48 150 L 48 112 L 54 112 L 50 66 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+
+                    <!-- Arms at sides -->
+                    <path d="M 20 70 L 10 78 L 8 110 L 14 112 L 16 82 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+                    <path d="M 50 70 L 60 78 L 62 110 L 56 112 L 54 82 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+
                     <!-- Tool Belt -->
-                    <rect x="10" y="90" width="40" height="8" fill="#FFB3D4"/>
+                    <rect x="18" y="110" width="34" height="8" rx="2" fill="#FFB3D4" opacity="0.8"/>
+                    <circle cx="28" cy="114" r="3" fill="#8FB3E8"/>
+                    <circle cx="42" cy="114" r="3" fill="#8FB3E8"/>
+
                     <!-- Legs -->
-                    <rect x="18" y="105" width="12" height="45" rx="5" fill="#2D3142"/>
-                    <rect x="30" y="105" width="12" height="45" rx="5" fill="#2D3142"/>
+                    <rect x="20" y="150" width="14" height="45" rx="5"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+                    <rect x="36" y="150" width="14" height="45" rx="5"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
                 </g>
 
-                <!-- Worker Silhouette 2: With Wrench -->
-                <g class="worker-silhouette" transform="translate(200, 220)">
-                    <!-- Hard Hat -->
-                    <ellipse cx="25" cy="8" rx="24" ry="7" fill="#FFB3D4"/>
-                    <path d="M 8 8 Q 25 -4 42 8 L 42 16 Q 25 25 8 16 Z" fill="#E8D7FF"/>
+                <!-- Worker 2: Mechanic with Wrench (Front Right) -->
+                <g class="worker-silhouette" transform="translate(270, 240)" filter="url(#figureGlow)">
+                    <!-- Shadow -->
+                    <ellipse cx="32" cy="158" rx="33" ry="9" fill="#5F6C7B" opacity="0.25"/>
+
+                    <!-- Cap/Beanie -->
+                    <ellipse cx="32" cy="18" rx="24" ry="7" fill="#8FB3E8" opacity="0.8"/>
+                    <path d="M 12 18 Q 32 5 52 18 L 52 26 Q 32 34 12 26 Z"
+                          fill="#B8A4D8" stroke="#8FB3E8" stroke-width="1"/>
+
                     <!-- Head -->
-                    <circle cx="25" cy="30" r="18" fill="#5F6C7B"/>
+                    <circle cx="32" cy="35" r="20" fill="#5F6C7B"/>
+
                     <!-- Body -->
-                    <rect x="12" y="48" width="26" height="42" rx="4" fill="#2D3142"/>
-                    <!-- Arms (one raised with tool) -->
-                    <rect x="4" y="52" width="8" height="30" rx="4" fill="#2D3142" transform="rotate(-30 8 52)"/>
-                    <rect x="38" y="52" width="8" height="30" rx="4" fill="#2D3142"/>
+                    <path d="M 32 55 L 18 60 L 15 105 L 20 105 L 20 145 L 44 145 L 44 105 L 49 105 L 46 60 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+
+                    <!-- Arm with wrench raised -->
+                    <path d="M 18 64 L 8 58 L 5 40 L 11 38 L 14 56 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+
+                    <!-- Wrench in hand -->
+                    <rect x="-2" y="32" width="6" height="28" rx="2"
+                          fill="#C3E4FF" stroke="#8FB3E8" stroke-width="1.5" transform="rotate(-20 2 46)"/>
+                    <path d="M -4 30 L 4 30 L 6 36 L 2 38 L -2 36 Z"
+                          fill="#5F6C7B" stroke="#4A4E69" stroke-width="1"/>
+
+                    <!-- Other arm -->
+                    <path d="M 46 64 L 56 72 L 58 100 L 52 102 L 50 76 Z"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+
+                    <!-- Work pants with pockets -->
+                    <rect x="17" y="103" width="30" height="6" rx="2" fill="#8FB3E8" opacity="0.6"/>
+
                     <!-- Legs -->
-                    <rect x="15" y="90" width="10" height="38" rx="4" fill="#2D3142"/>
-                    <rect x="25" y="90" width="10" height="38" rx="4" fill="#2D3142"/>
+                    <rect x="18" y="145" width="13" height="43" rx="5"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
+                    <rect x="33" y="145" width="13" height="43" rx="5"
+                          fill="#2D3142" stroke="#4A4E69" stroke-width="1.5"/>
                 </g>
 
-                <!-- Floating Tool 1: Hammer -->
-                <g class="tool-hammer" transform="translate(320, 80)">
-                    <!-- Handle -->
-                    <rect x="0" y="15" width="8" height="60" rx="4" fill="#B8A4D8"/>
-                    <!-- Head -->
-                    <rect x="-15" y="0" width="38" height="20" rx="3" fill="#5F6C7B"/>
-                    <!-- Claw -->
-                    <path d="M 20 8 L 30 -5 L 32 0 L 23 12 Z" fill="#5F6C7B"/>
-                </g>
-
-                <!-- Floating Tool 2: Wrench -->
-                <g class="tool-wrench" transform="translate(140, 100)">
-                    <!-- Handle -->
-                    <rect x="0" y="0" width="6" height="70" rx="3" fill="#8FB3E8" transform="rotate(25 3 35)"/>
-                    <!-- Adjustable Head -->
-                    <rect x="-5" y="-8" width="16" height="12" rx="2" fill="#5F6C7B"/>
-                    <rect x="-3" y="-12" width="5" height="8" rx="1" fill="#5F6C7B"/>
-                </g>
-
-                <!-- Floating Tool 3: Gear/Cog -->
-                <g class="tool-gear" transform="translate(360, 220)">
-                    <!-- Gear outer -->
-                    <circle cx="0" cy="0" r="35" fill="#FFD4E5"/>
-                    <!-- Gear teeth -->
-                    <rect x="-4" y="-40" width="8" height="12" rx="2" fill="#FFB3D4"/>
-                    <rect x="-4" y="28" width="8" height="12" rx="2" fill="#FFB3D4"/>
-                    <rect x="-40" y="-4" width="12" height="8" rx="2" fill="#FFB3D4"/>
-                    <rect x="28" y="-4" width="12" height="8" rx="2" fill="#FFB3D4"/>
-                    <rect x="-30" y="-30" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(45)"/>
-                    <rect x="22" y="-30" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(-45)"/>
-                    <rect x="-30" y="22" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(-45)"/>
-                    <rect x="22" y="22" width="8" height="8" rx="2" fill="#FFB3D4" transform="rotate(45)"/>
-                    <!-- Gear center -->
-                    <circle cx="0" cy="0" r="12" fill="#B8A4D8"/>
-                    <circle cx="0" cy="0" r="6" fill="#FAFBFC"/>
-                </g>
-
-                <!-- Abstract Skill Path/Arrow (representing growth) -->
-                <g opacity="0.7">
-                    <path d="M 50 400 Q 150 350 250 380 T 450 350"
-                          stroke="#B8A4D8"
-                          stroke-width="3"
-                          fill="none"
-                          stroke-dasharray="10,5"
-                          opacity="0.6"/>
-                    <circle cx="50" cy="400" r="8" fill="#B8A4D8"/>
-                    <circle cx="250" cy="380" r="8" fill="#8FB3E8"/>
-                    <circle cx="450" cy="350" r="8" fill="#FFB3D4"/>
-                </g>
-
-                <!-- Hard Hat Icon (larger, decorative) -->
-                <g transform="translate(280, 420)">
-                    <ellipse cx="40" cy="15" rx="38" ry="10" fill="#C3E4FF" opacity="0.6"/>
-                    <path d="M 10 15 Q 40 -8 70 15 L 70 30 Q 40 45 10 30 Z" fill="#E8D7FF" opacity="0.7"/>
-                    <rect x="35" y="-5" width="10" height="20" fill="#FFD4E5" opacity="0.6"/>
-                </g>
+                <!-- Subtle Ambient Elements (Floating Soft Shapes) -->
+                <circle cx="100" cy="80" r="15" fill="#D4FFE8" opacity="0.3" filter="url(#softBlur)"/>
+                <circle cx="420" cy="120" r="20" fill="#FFD4E5" opacity="0.3" filter="url(#softBlur)"/>
+                <circle cx="380" cy="350" r="18" fill="#E8D7FF" opacity="0.3" filter="url(#softBlur)"/>
             </svg>
         </div>
     </header>
